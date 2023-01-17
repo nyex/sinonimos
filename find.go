@@ -69,11 +69,11 @@ func Find(input *FindInput) (*FindOutput, error) {
 		return nil, ErrInvalidFormatBody
 	}
 
-	meaningSections := scrape.FindAll(root, scrape.ByClass("s-wrapper"))
+	meaningSections := scrape.FindAll(root, scrape.ByClass("content-detail"))
 	meanings := make([]Meaning, len(meaningSections))
 
 	for j, meaningSection := range meaningSections {
-		if meaning, ok := scrape.Find(meaningSection, scrape.ByClass("sentido")); ok {
+		if meaning, ok := scrape.Find(meaningSection, scrape.ByClass("syn-list")); ok {
 			meanings[j].Description = strings.TrimSpace(scrape.Text(meaning))
 		}
 
@@ -83,7 +83,7 @@ func Find(input *FindInput) (*FindOutput, error) {
 			meanings[j].Synonyms[i] = strings.TrimSpace(scrape.Text(synonym))
 		}
 
-		examples := scrape.FindAll(meaningSection, scrape.ByClass("exemplo"))
+		examples := scrape.FindAll(meaningSection, scrape.ByClass("content-info"))
 		meanings[j].Examples = make([]string, len(examples))
 		for i, example := range examples {
 			meanings[j].Examples[i] = strings.TrimSpace(scrape.Text(example))
