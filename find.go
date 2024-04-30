@@ -11,7 +11,7 @@ import (
 	"github.com/yhat/scrape"
 	"golang.org/x/net/html"
 	"golang.org/x/net/html/atom"
-	"golang.org/x/text/encoding/charmap"
+//	"golang.org/x/text/encoding/charmap"
 )
 
 var (
@@ -63,8 +63,8 @@ func Find(input *FindInput) (*FindOutput, error) {
 		return nil, ErrNotFound
 	}
 
-	body := 
-	root, err := html.Parse(body)
+	root, err := html.Parse(resp.Body)
+	resp.Body.Close() // Close the response body after parsing
 	if err != nil {
 		return nil, ErrInvalidFormatBody
 	}
