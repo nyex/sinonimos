@@ -9,7 +9,7 @@ import (
 
 	"github.com/briandowns/spinner"
 	"github.com/fatih/color"
-	"github.com/felipemfp/sinonimos"
+	"github.com/nyex/sinonimos"
 	cli "github.com/jawher/mow.cli"
 )
 

@@ -63,7 +63,7 @@ func Find(input *FindInput) (*FindOutput, error) {
 		return nil, ErrNotFound
 	}
 
-	body := charmap.ISO8859_1.NewDecoder().Reader(resp.Body)
+	body := 
 	root, err := html.Parse(body)
 	if err != nil {
 		return nil, ErrInvalidFormatBody
