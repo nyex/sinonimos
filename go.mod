@@ -1,4 +1,4 @@
-module github.com/felipemfp/sinonimos
+module github.com/nyex/sinonimos
 
 go 1.12
 
